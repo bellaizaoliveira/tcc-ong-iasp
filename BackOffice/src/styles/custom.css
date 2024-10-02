@@ -1,0 +1,92 @@
+/* custom.css */
+
+/* Cores primárias */
+:root {
+    --color-primary: #1F7D35;  /* Cor principal */
+    --color-secondary: #4C7449; /* Cor secundária */
+    --color-success: #80E7AB;   /* Cor de sucesso */
+    --color-info: #6EB680;      /* Cor de informação */
+    --color-light: #f4f9f4;     /* Cor clara */
+}
+
+/* Estilizando botões */
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    border-color: var(--color-light);
+}
+
+.btn-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+}
+
+.btn-success:hover {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+}
+
+/* Estilizando alertas */
+.alert-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: #fff;
+}
+
+.alert-info {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+    color: #fff;
+}
+
+/* Estilizando o fundo */
+body {
+    background-color: var(--color-light);
+    color: var(--color-secondary);
+}
+
+/* Estilizando links */
+a {
+    color: var(--color-primary);
+}
+
+a:hover {
+    color: var(--color-success);
+}
+
+/* Estilizando cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-secondary);
+}
+
+/* Estilizando navegação */
+.navbar {
+    background-color: var(--color-primary);
+}
+
+.nav-link {
+    color: #0eb732; /* Cor padrão dos links */
+}
+
+.nav-link:hover {
+    color: var(--color-success); /* Cor ao passar o mouse */
+}
+
+/* Outros elementos que você pode querer customizar */
+.card {
+    border-color: var(--color-secondary);
+}
