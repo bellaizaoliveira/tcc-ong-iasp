@@ -1,50 +1,42 @@
 /* custom.css */
 
+/* Importando a fonte Poppins Medium */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 /* Cores primárias */
 :root {
-    --color-primary: #1F7D35;  /* Cor principal */
-    --color-secondary: #4C7449; /* Cor secundária */
-    --color-success: #80E7AB;   /* Cor de sucesso */
-    --color-info: #6EB680;      /* Cor de informação */
-    --color-light: #f4f9f4;     /* Cor clara */
+    --color-primary: #7ed957;   /* Verde principal */
+    --color-secondary: #c1ff72; /* Verde para detalhes */
+    --color-success: #00bf63;   /* Verde para textos específicos */
+    --color-info: #c1ff72;      /* Verde para detalhes (similar) */
+    --color-light: #f8f8f3;     /* Branco creme bem fraquinho */
+    --color-black: #000000;     /* Texto padrão preto */
+}
+
+/* Fonte geral */
+body {
+    font-family: 'Poppins', sans-serif;  /* Fonte Poppins Medium aplicada */
+    background-color: var(--color-light);
+    color: var(--color-black);
 }
 
 /* Estilizando botões */
-.btn-primary {
+.btn-primary, .btn-secondary, .btn-success {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
+    color: #fff; /* Texto dos botões branco */
 }
 
-.btn-primary:hover {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-}
-
-.btn-secondary {
-    background-color: var(--color-secondary);
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+    background-color: var(--color-secondary); /* Cor ao passar o mouse */
     border-color: var(--color-secondary);
-}
-
-.btn-secondary:hover {
-    background-color: var(--color-light);
-    border-color: var(--color-light);
-}
-
-.btn-success {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-}
-
-.btn-success:hover {
-    background-color: var(--color-info);
-    border-color: var(--color-info);
 }
 
 /* Estilizando alertas */
 .alert-success {
     background-color: var(--color-success);
     border-color: var(--color-success);
-    color: #fff;
+    color: #fff; /* Texto branco */
 }
 
 .alert-info {
@@ -53,24 +45,18 @@
     color: #fff;
 }
 
-/* Estilizando o fundo */
-body {
-    background-color: var(--color-light);
-    color: var(--color-secondary);
-}
-
 /* Estilizando links */
 a {
-    color: var(--color-primary);
+    color: var(--color-success); /* Verde para textos específicos */
 }
 
 a:hover {
-    color: var(--color-success);
+    color: var(--color-primary); /* Verde principal */
 }
 
 /* Estilizando cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-secondary);
+    color: var(--color-black); /* Títulos em preto */
 }
 
 /* Estilizando navegação */
@@ -79,14 +65,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link {
-    color: #0eb732; /* Cor padrão dos links */
+    color: var(--color-success); /* Verde para textos específicos */
 }
 
 .nav-link:hover {
-    color: var(--color-success); /* Cor ao passar o mouse */
+    color: var(--color-secondary); /* Verde para detalhes */
 }
 
-/* Outros elementos que você pode querer customizar */
+/* Estilizando cards */
 .card {
-    border-color: var(--color-secondary);
+    border-color: var(--color-secondary); /* Verde para detalhes */
 }
