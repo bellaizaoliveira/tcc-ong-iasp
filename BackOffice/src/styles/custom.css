@@ -1,0 +1,78 @@
+/* custom.css */
+
+/* Importando a fonte Poppins Medium */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+/* Cores primárias */
+:root {
+    --color-primary: #7ed957;   /* Verde principal */
+    --color-secondary: #c1ff72; /* Verde para detalhes */
+    --color-success: #00bf63;   /* Verde para textos específicos */
+    --color-info: #c1ff72;      /* Verde para detalhes (similar) */
+    --color-light: #f8f8f3;     /* Branco creme bem fraquinho */
+    --color-black: #000000;     /* Texto padrão preto */
+}
+
+/* Fonte geral */
+body {
+    font-family: 'Poppins', sans-serif;  /* Fonte Poppins Medium aplicada */
+    background-color: var(--color-light);
+    color: var(--color-black);
+}
+
+/* Estilizando botões */
+.btn-primary, .btn-secondary, .btn-success {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff; /* Texto dos botões branco */
+}
+
+.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
+    background-color: var(--color-secondary); /* Cor ao passar o mouse */
+    border-color: var(--color-secondary);
+}
+
+/* Estilizando alertas */
+.alert-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: #fff; /* Texto branco */
+}
+
+.alert-info {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+    color: #fff;
+}
+
+/* Estilizando links */
+a {
+    color: var(--color-success); /* Verde para textos específicos */
+}
+
+a:hover {
+    color: var(--color-primary); /* Verde principal */
+}
+
+/* Estilizando cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-black); /* Títulos em preto */
+}
+
+/* Estilizando navegação */
+.navbar {
+    background-color: var(--color-primary);
+}
+
+.nav-link {
+    color: var(--color-success); /* Verde para textos específicos */
+}
+
+.nav-link:hover {
+    color: var(--color-secondary); /* Verde para detalhes */
+}
+
+/* Estilizando cards */
+.card {
+    border-color: var(--color-secondary); /* Verde para detalhes */
+}

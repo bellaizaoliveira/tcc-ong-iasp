@@ -1,0 +1,186 @@
+{
+  "produto": [
+    {
+      "id": "1",
+      "nome": "Muçarela",
+      "descricao": "Base de molho de tomate com cobertura de muçarela, orégano e tomate",
+      "codigoBarras": "0001",
+      "urlFoto": "https://imagens.jotaja.com/produtos/75c06707-f149-445f-97e0-6c51c07bf4a8.jpg",
+      "preco": 29.98,
+      "categoria_id": 7,
+      "statusProd": "ATIVO"
+    },
+    {
+      "id": "2",
+      "nome": "Calabresa",
+      "descricao": "Base de molho de tomate e queijo com cobertura de calabresa",
+      "codigoBarras": "0002",
+      "urlFoto": "https://imagens.jotaja.com/produtos/8dcfa759-90e7-47af-bbd0-6f64fc8c0c4c.jpg\r\n",
+      "preco": 29.98,
+      "categoria_id": 1,
+      "statusProd": "ATIVO"
+    },
+    {
+      "id": "3",
+      "nome": "Frango com Catupiry",
+      "descricao": "Base de molho de tomate com cobertura de frango desfiado com catupiry",
+      "codigoBarras": "0003",
+      "urlFoto": "https://imagens.jotaja.com/produtos/75c06707-f149-445f-97e0-6c51c07bf4a8.jpg",
+      "preco": 37.98,
+      "categoria_id": 4,
+      "statusProd": "ATIVO"
+    },
+    {
+      "id": "4",
+      "nome": "Marguerita",
+      "descricao": "Base de molho de tomate com cobertura de muçarela, manjericão, orégano e tomate",
+      "codigoBarras": "0004",
+      "urlFoto": "https://static.itdg.com.br/images/120-90/e6189f1852c4dbec9f6e67ca21b27908/7787-original.jpg",
+      "preco": 31.98,
+      "categoria_id": 7,
+      "statusProd": "ATIVO"
+    },
+    {
+      "id": "5",
+      "nome": "Banana com Canela e Leite Condensado",
+      "descricao": "Banana picada coberta com Canela em pó em uma base de Leite Condensado",
+      "codigoBarras": "0005",
+      "urlFoto": "https://imagens.jotaja.com/produtos/75c06707-f149-445f-97e0-6c51c07bf4a8.jpg",
+      "preco": 35.99,
+      "categoria_id": 2,
+      "statusProd": "ATIVO"
+    }
+  ],
+  "categoria": [
+    {
+      "id": "1",
+      "nome": "CARNES & FRIOS"
+    },
+    {
+      "id": "2",
+      "nome": "DOCE"
+    },
+    {
+      "id": "3",
+      "nome": "ESPECIAL"
+    },
+    {
+      "id": "4",
+      "nome": "FRANGO"
+    },
+    {
+      "id": "5",
+      "nome": "LEGUMES"
+    },
+    {
+      "id": "6",
+      "nome": "PEIXE"
+    },
+    {
+      "id": "7",
+      "nome": "QUEIJO"
+    },
+    {
+      "id": "8",
+      "nome": "REFRIGERANTES & SUCOS"
+    },
+    {
+      "id": "9",
+      "nome": "VINHO"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "Fernando Cesar de Moura Silva",
+      "email": "fernando@nxts.com.br",
+      "statusUsuario": "ATIVO",
+      "nivelAcesso": "ADMINISTRADOR",
+      "cpf": "51826046704",
+      "telefone": "11999905519",
+      "dataCadastro": "2024-09-30",
+      "senha": "$2a$10$lNiwnrkf2NHzVdS9u59bje627XahD3.P83VUHX37dVzo8KAd6MSge"
+    },
+    {
+      "id": "2",
+      "nome": "Beltrana de Sá",
+      "email": "beltrana@email.com.br",
+      "senha": "MTIzNDU2Nzg=",
+      "nivelAcesso": "USER",
+      "cpf": "11 95365-5931 ",
+      "telefone": "694.236.486-69",
+      "dataCadastro": "2024-09-25T10:24:00",
+      "statusUsuario": "ATIVO"
+    },
+    {
+      "id": "3",
+      "nome": "Sicrana de Oliveira",
+      "email": "sicrana@email.com.br",
+      "senha": "MTIzNDU2Nzg=",
+      "nivelAcesso": "USER",
+      "cpf": "11 97065-9682 ",
+      "telefone": "401.409.504-89",
+      "dataCadastro": "2024-09-25T10:24:00",
+      "statusUsuario": "INATIVO"
+    },
+    {
+      "id": "4",
+      "nome": "Ordnael Zurc",
+      "email": "ordnael@email.com.br",
+      "senha": "MTIzNDU2Nzg=",
+      "nivelAcesso": "USER",
+      "cpf": "11 93710-4738 ",
+      "telefone": "942.502.582-46",
+      "dataCadastro": "2024-09-25T10:24:00",
+      "statusUsuario": "TROCAR_SENHA"
+    },
+    {
+      "id": "5",
+      "nome": "Novo Administrador",
+      "email": "novo@admin.com",
+      "senha": "MTIzNDU2Nzg=",
+      "nivelAcesso": "ADMIN",
+      "cpf": "450.128.375-22",
+      "telefone": "11 95324-4002",
+      "dataCadastro": "2024-09-25T10:24:00",
+      "statusUsuario": "ATIVO"
+    },
+    {
+      "id": "1",
+      "nome": "Fernando Cesar de Moura Silva",
+      "email": "fernando.cesar@professor.berueri.br",
+      "statusUsuario": "ATIVO",
+      "nivelAcesso": "ADMINISTRADOR",
+      "cpf": "51826046704",
+      "telefone": "11999905519",
+      "dataCadastro": "2024-09-30",
+      "senha": "$2a$10$c5gQN5PkSYpCWJOK2T8xeebC9T815f3a///FysHzxKT.9bYMigmfe"
+    }
+  ],
+  "dadosbasicos": [
+    {
+      "id": "1",
+      "tabela": "NivelAcessoUsuario",
+      "codigo": "ADMIN",
+      "valor": "ADMINISTRADOR"
+    },
+    {
+      "id": "2",
+      "tabela": "NivelAcessoUsuario",
+      "codigo": "USER",
+      "valor": "USUÁRIO"
+    },
+    {
+      "id": "3",
+      "tabela": "SituacaoUsuario",
+      "codigo": "1",
+      "valor": "ATIVO"
+    },
+    {
+      "id": "4",
+      "tabela": "SituacaoUsuario",
+      "codigo": "2",
+      "valor": "INATIVO"
+    }
+  ]
+}
