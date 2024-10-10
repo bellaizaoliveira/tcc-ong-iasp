@@ -10,6 +10,7 @@ import Administracao from "./containers/Administracao";
 import CadastroOcorrencia from './containers/CadastroOcorrencia';  
 import CadastroFotosOcorrencia from './containers/CadastroFotosOcorrencia';  
 import Login from "./components/Login";
+import QuadroOcorrencias from "./components/QuadroOcorrencias";
 import { AuthProvider } from "./context/AuthContext"; // Importar o AuthProvider
 import ProtectedRoute from "./components/ProtectedRoute";
 

@@ -1,5 +1,6 @@
 
-import QuadroOcorrencias from "../components/QuadroOcorrencias";
+
+import Sobre from "./Sobre";
 
 
 
@@ -7,9 +8,13 @@ const Home = () => {
   
 
   return (
-    
+    <div>
 
-    <QuadroOcorrencias></QuadroOcorrencias>
+<Sobre></Sobre>
+
+    </div>
+
+    
    
   );
 };

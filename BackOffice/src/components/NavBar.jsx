@@ -56,7 +56,7 @@ const NavBar = () => {
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link
                 to="/sobre"
                 className={`nav-link ${
@@ -67,7 +67,7 @@ const NavBar = () => {
               >
                 Sobre
               </Link>
-            </li>
+            </li> */}
             {isAuthenticated &&
               nivelAcesso === "ADMINISTRADOR" && ( // Verifica se o usuário é autenticado e se o nível de acesso é ADMINISTRATOR
                 <li className="nav-item">
