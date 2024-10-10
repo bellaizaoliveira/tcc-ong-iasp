@@ -3,6 +3,8 @@ import { useAuth } from '../context/AuthContext'; // Ajuste o caminho conforme n
 import { useNavigate } from 'react-router-dom';
 import { useApiRequest } from '../hooks/useApiRequest';
 import bcrypt from 'bcryptjs';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importando o ícone do FontAwesome
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'; // Ícones de olho
 import loginImage from '../assets/images/IconLogin.png'; // Importando a imagem
 
 const Login = () => {
@@ -11,6 +13,7 @@ const Login = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [emailInput, setEmailInput] = useState(""); // Alterado para email
   const [senhaInput, setSenhaInput] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // Estado para controlar mostrar/ocultar senha
   const [error, setError] = useState("");
   const url = import.meta.env.VITE_API_OBTER_USUARIOS;
 
@@ -28,7 +31,7 @@ const Login = () => {
     setError("");
 
     // Encontrar o usuário com base no email
-    const usuario = usuarios.find((user) => user.email === emailInput); // Alterado para email
+    const usuario = usuarios.find((user) => user.email === emailInput);
 
     if (usuario) {
       // Comparar a senha fornecida com a senha criptografada
@@ -74,15 +77,24 @@ const Login = () => {
 
                 <div className="form-group mb-3">
                   <label htmlFor="senha" className="form-label fs-6">Senha:</label>
-                  <input
-                    className="form-control fs-6" 
-                    type="password"
-                    value={senhaInput}
-                    name="senha"
-                    onChange={(e) => setSenhaInput(e.target.value)}
-                    required
-                    style={{ width: '100%', height: '50px' }} // Aumentando a largura do campo
-                  />
+                  <div className="input-group">
+                    <input
+                      className="form-control fs-6" 
+                      type={showPassword ? "text" : "password"} // Controla se a senha será mostrada ou ocultada
+                      value={senhaInput}
+                      name="senha"
+                      onChange={(e) => setSenhaInput(e.target.value)}
+                      required
+                      style={{ height: '50px' }} // Aumentando a altura do campo
+                    />
+                    <span 
+                      className="input-group-text"
+                      onClick={() => setShowPassword(!showPassword)} // Alterna entre mostrar e ocultar a senha
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                    </span>
+                  </div>
                 </div>
 
                 <div className="d-flex justify-content-between">

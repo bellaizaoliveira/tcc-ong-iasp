@@ -3,10 +3,10 @@
 
 /* Cores primárias */
 :root {
-    --color-primary: #7ed957;  /* Verde principal */
+    --color-primary: #8dcc4c;  /* Verde mais claro (anteriormente cor de sucesso) */
     --color-secondary: #00bf63; /* Verde */
-    --color-success: #8dcc4c;   /* Verde para detalhes (mais escuro) */
-    --color-info: #8dcc4c;      /* Verde para detalhes (mais escuro) */
+    --color-success: #7ed957;   /* Verde para detalhes (mais escuro) */
+    --color-info: #7ed957;      /* Verde para detalhes (mais escuro) */
     --color-light: #ffffff;     /* Background branco */
     --color-text: #000000;      /* Cor do texto: preto */
     --color-button-text: #ffffff; /* Cor do texto nos botões: branco */
@@ -68,11 +68,13 @@ body {
     color: var(--color-text); /* Texto preto */
     font-family: 'Poppins', sans-serif;
     font-weight: 500; /* Fonte Poppins medium */
+    font-size: 14px; /* Tamanho da fonte padrão reduzido */
 }
 
 /* Estilizando links */
 a {
     color: var(--color-primary);
+    font-size: 14px; /* Tamanho da fonte dos links */
 }
 
 a:hover {
@@ -80,10 +82,21 @@ a:hover {
 }
 
 /* Estilizando cabeçalhos */
-h1, h2, h3, h4, h5, h6 {
+h1 {
+    font-size: 22px; /* Tamanho reduzido para h1 */
+}
+h2 {
+    font-size: 20px; /* Tamanho reduzido para h2 */
+}
+h3 {
+    font-size: 18px; /* Tamanho reduzido para h3 */
+}
+h4 {
+    font-size: 16px; /* Tamanho reduzido para h4 */
+}
+h5, h6 {
+    font-size: 14px; /* Tamanho reduzido para h5 e h6 */
     color: var(--color-text); /* Texto preto */
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
 }
 
 /* Estilizando navegação */
@@ -93,6 +106,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
     color: var(--color-text); /* Texto preto */
+    font-size: 14px; /* Tamanho da fonte dos links de navegação */
 }
 
 .nav-link:hover {
@@ -107,10 +121,24 @@ footer {
     color: var(--color-button-text); /* Texto branco no rodapé */
     text-align: center;
     font-family: 'Poppins', sans-serif;
+    font-size: 14px; /* Tamanho da fonte do rodapé */
+}
+
+/* Estilizando campos de entrada */
+input, textarea, select {
+    font-size: 12px; /* Tamanho da fonte dentro dos campos */
+    padding: 8px; /* Ajustando o preenchimento para uma melhor estética */
+}
+
+/* Estilizando campos de entrada com foco */
+input:focus, textarea:focus, select:focus {
+    border-color: var(--color-success); /* Cor da borda ao focar */
+    outline: none; /* Remove o contorno padrão ao focar */
 }
 
 /* Outros elementos que você pode querer customizar */
 .card {
     border-color: var(--color-secondary);
     color: var(--color-text); /* Texto preto */
+    font-size: 12px; /* Tamanho da fonte para elementos de cartão */
 }

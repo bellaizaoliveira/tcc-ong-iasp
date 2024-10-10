@@ -1,6 +1,53 @@
 /* CadastroUsuarios.css */
+
+/* Cores primárias */
+:root {
+    --color-primary: #8dcc4c;  /* Verde mais claro (anteriormente cor de sucesso) */
+    --color-secondary: #00bf63; /* Verde */
+    --color-success: #7ed957;   /* Verde para detalhes (mais escuro) */
+    --color-info: #7ed957;      /* Verde para detalhes (mais escuro) */
+    --color-light: #ffffff;     /* Background branco */
+    --color-text: #000000;      /* Cor do texto: preto */
+    --color-button-text: #ffffff; /* Cor do texto nos botões: branco */
+}
+
 .fs-small {
-    font-size: 0.6rem; 
-    /* 60% menor que 1rem */
-    
+    font-size: 0.6rem; /* 60% menor que 1rem */
+}
+
+.formulario-pequeno {
+    max-width: 400px; /* Altere para o tamanho desejado */
+    margin: auto; /* Centraliza o formulário */
+    font-size: 14px; /* Altere o valor conforme necessário */
+    background-color: var(--color-light); /* Fundo do formulário */
+    color: var(--color-text); /* Cor do texto dentro do formulário */
+    padding: 20px; /* Preenchimento do formulário */
+    border: 1px solid var(--color-secondary); /* Borda do formulário */
+    border-radius: 5px; /* Arredondamento dos cantos */
+}
+
+/* Estilizando campos de entrada dentro do formulário */
+input, textarea, select {
+    font-size: 11px; /* Tamanho da fonte dentro dos campos */
+    padding: 8px; /* Ajustando o preenchimento para uma melhor estética */
+    border: 1px solid var(--color-secondary); /* Borda dos campos */
+    border-radius: 4px; /* Arredondamento dos cantos dos campos */
+    width: 100%; /* Largura total do campo */
+    box-sizing: border-box; /* Inclui padding e border no total da largura */
+}
+
+/* Estilizando botões dentro do formulário */
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-button-text); /* Texto branco */
+    padding: 10px; /* Preenchimento do botão */
+    border-radius: 4px; /* Arredondamento dos cantos do botão */
+    cursor: pointer; /* Cursor de mão ao passar por cima */
+}
+
+.btn-primary:hover {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-button-text); /* Texto branco */
 }

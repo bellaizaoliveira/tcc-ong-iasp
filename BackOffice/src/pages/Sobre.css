@@ -1,0 +1,22 @@
+/* custom.css */
+
+/* Aumentar o tamanho dos títulos */
+h1 {
+    font-size: 2rem; /* Você pode ajustar o valor conforme necessário */
+  }
+  
+  h2 {
+    font-size: 1.5rem; /* Ajuste este valor conforme necessário */
+  }
+  
+  h3 {
+    font-size: 1rem; /* Caso use h3, ajuste conforme necessário */
+  }
+  
+  /* Outros ajustes, caso queira */
+  h4, h5, h6 {
+    font-size: 0.8rem;
+
+
+  }
+  
