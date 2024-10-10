@@ -1,62 +1,89 @@
-/* custom.css */
-
-/* Importando a fonte Poppins Medium */
+/* Importando a fonte Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 /* Cores primárias */
 :root {
-    --color-primary: #7ed957;   /* Verde principal */
-    --color-secondary: #c1ff72; /* Verde para detalhes */
-    --color-success: #00bf63;   /* Verde para textos específicos */
-    --color-info: #c1ff72;      /* Verde para detalhes (similar) */
-    --color-light: #f8f8f3;     /* Branco creme bem fraquinho */
-    --color-black: #000000;     /* Texto padrão preto */
-}
-
-/* Fonte geral */
-body {
-    font-family: 'Poppins', sans-serif;  /* Fonte Poppins Medium aplicada */
-    background-color: var(--color-light);
-    color: var(--color-black);
+    --color-primary: #7ed957;  /* Verde principal */
+    --color-secondary: #00bf63; /* Verde */
+    --color-success: #8dcc4c;   /* Verde para detalhes (mais escuro) */
+    --color-info: #8dcc4c;      /* Verde para detalhes (mais escuro) */
+    --color-light: #ffffff;     /* Background branco */
+    --color-text: #000000;      /* Cor do texto: preto */
+    --color-button-text: #ffffff; /* Cor do texto nos botões: branco */
 }
 
 /* Estilizando botões */
-.btn-primary, .btn-secondary, .btn-success {
+.btn-primary {
     background-color: var(--color-primary);
     border-color: var(--color-primary);
-    color: #fff; /* Texto dos botões branco */
+    color: var(--color-button-text); /* Texto branco */
 }
 
-.btn-primary:hover, .btn-secondary:hover, .btn-success:hover {
-    background-color: var(--color-secondary); /* Cor ao passar o mouse */
+.btn-primary:hover {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-button-text); /* Texto branco */
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
     border-color: var(--color-secondary);
+    color: var(--color-button-text); /* Texto branco */
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    border-color: var(--color-light);
+    color: var(--color-secondary); /* Texto na cor verde */
+}
+
+.btn-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-button-text); /* Texto branco */
+}
+
+.btn-success:hover {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+    color: var(--color-button-text); /* Texto branco */
 }
 
 /* Estilizando alertas */
 .alert-success {
     background-color: var(--color-success);
     border-color: var(--color-success);
-    color: #fff; /* Texto branco */
+    color: var(--color-text); /* Texto preto */
 }
 
 .alert-info {
     background-color: var(--color-info);
     border-color: var(--color-info);
-    color: #fff;
+    color: var(--color-text); /* Texto preto */
+}
+
+/* Estilizando o fundo */
+body {
+    background-color: var(--color-light);
+    color: var(--color-text); /* Texto preto */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500; /* Fonte Poppins medium */
 }
 
 /* Estilizando links */
 a {
-    color: var(--color-success); /* Verde para textos específicos */
+    color: var(--color-primary);
 }
 
 a:hover {
-    color: var(--color-primary); /* Verde principal */
+    color: var(--color-success);
 }
 
 /* Estilizando cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--color-black); /* Títulos em preto */
+    color: var(--color-text); /* Texto preto */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 /* Estilizando navegação */
@@ -65,14 +92,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link {
-    color: var(--color-success); /* Verde para textos específicos */
+    color: var(--color-text); /* Texto preto */
 }
 
 .nav-link:hover {
-    color: var(--color-secondary); /* Verde para detalhes */
+    color: var(--color-success); /* Cor ao passar o mouse */
 }
 
-/* Estilizando cards */
+/* Estilizando o rodapé */
+footer {
+    margin-top: 50px; /* Espaçamento extra para o rodapé */
+    padding: 20px;
+    background-color: var(--color-secondary);
+    color: var(--color-button-text); /* Texto branco no rodapé */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Outros elementos que você pode querer customizar */
 .card {
-    border-color: var(--color-secondary); /* Verde para detalhes */
+    border-color: var(--color-secondary);
+    color: var(--color-text); /* Texto preto */
 }

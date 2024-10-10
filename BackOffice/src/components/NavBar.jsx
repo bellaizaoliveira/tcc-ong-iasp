@@ -91,7 +91,7 @@ const NavBar = () => {
               </li>
             ) : (
               <li className="nav-item">
-                <button className="btn btn-danger" onClick={logout}>
+                <button className="btn btn-secondary" onClick={logout}>
                   <FontAwesomeIcon icon={faSignOutAlt} /> Logout
                 </button>
               </li>

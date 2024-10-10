@@ -57,7 +57,7 @@ const Login = () => {
               style={{ maxWidth: '300px', height: 'auto', objectFit: 'contain' }} // Mantendo a proporcionalidade da imagem
             />
             <div className="flex-grow-1">
-              <h4 className="text-center mb-4 fs-6">Login</h4>
+              <h4 className="text-center mb-4 fs-10">Login</h4>
               <form onSubmit={handleSubmit} className="form">
                 <div className="form-group mb-3">
                   <label htmlFor="email" className="form-label fs-6">Email:</label>

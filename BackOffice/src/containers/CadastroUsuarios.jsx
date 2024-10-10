@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useApiRequest } from "../hooks/useApiRequest";
 import bcrypt from "bcryptjs";
 import './CadastroUsuarios.css'; // Importa o CSS
+import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ícones para mostrar/ocultar senha
 
 const CadastroUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
@@ -11,7 +12,7 @@ const CadastroUsuarios = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
-
+  
   const { data: items, httpConfig, loading, error } = useApiRequest(url);
   const { data: nivelAcessoData, loading: loadingNivelAcesso } = useApiRequest(nivelAcessoUrl);
   const { data: statusData, loading: loadingStatus } = useApiRequest(statusUrl);
@@ -37,8 +38,11 @@ const CadastroUsuarios = () => {
   const [nivelAcesso, setNivelAcesso] = useState("");
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [dataCadastro, setDataCadastro] = useState(""); // Campo de data
+  const [dataCadastro, setDataCadastro] = useState("");
   const [senhaOriginal, setSenhaOriginal] = useState("");
+
+  const [showSenha, setShowSenha] = useState(false);
+  const [showSenhaConfirmacao, setShowSenhaConfirmacao] = useState(false);
 
   const handleItemClick = (usuario) => {
     setSenhaOriginal(usuario.senha);
@@ -50,7 +54,7 @@ const CadastroUsuarios = () => {
     setStatusUsuario(usuario.statusUsuario);
     setCpf(usuario.cpf);
     setTelefone(usuario.telefone);
-    setDataCadastro(usuario.dataCadastro); // Captura a data de cadastro
+    setDataCadastro(usuario.dataCadastro);
     setSenha("");
     setSenhaConfirmacao("");
   };
@@ -75,14 +79,13 @@ const CadastroUsuarios = () => {
       nivelAcesso,
       cpf,
       telefone,
-      dataCadastro, // Utiliza o valor da data de cadastro
+      dataCadastro,
     };
 
     if (buttonName === "incluir") {
       const salt = await bcrypt.genSalt(10);
       const senhaHash = await bcrypt.hash(senha, salt);
       usuario.senha = senhaHash;
-      usuario.dataCadastro = new Date().toISOString(); // Define a data de cadastro como a data e hora atual
       delete usuario.id;
     } else if (buttonName === "alterar") {
       if (senha) {
@@ -116,33 +119,18 @@ const CadastroUsuarios = () => {
     setSenhaConfirmacao("");
   };
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text).then(() => {
-      alert("Texto copiado: " + text);
-    }, (err) => {
-      alert("Erro ao copiar: " + err);
-    });
-  };
-
-  const handleNewUser = () => {
-    setSelectedItem(null); // Limpa a seleção do usuário
-    setId("");
-    setNome("");
-    setEmail("");
-    setSenha("");
-    setSenhaConfirmacao("");
-    setStatusUsuario("");
-    setNivelAcesso("");
-    setCpf("");
-    setTelefone("");
-    setDataCadastro(""); // Limpa a data de cadastro
+  const validatePassword = (password) => {
+    const minLength = password.length >= 8;
+    const hasNumber = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*]/.test(password);
+    return minLength && hasNumber && hasSpecialChar;
   };
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <h4 className="text-center mt-5 mb-5">Cadastro de Usuários</h4>
+          <h4 className="text-center mt-5 mb-5 ">Cadastro de Usuários</h4>
 
           <div className="filter-usurios mb-3">
             <input
@@ -150,7 +138,7 @@ const CadastroUsuarios = () => {
               placeholder="Pesquisar usuários ..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="form-control"
+              className="form-control "
             />
           </div>
           <div style={{ height: "auto", overflowY: "auto" }}>
@@ -161,7 +149,6 @@ const CadastroUsuarios = () => {
                   <th className="fs-small">Email</th>
                   <th className="fs-small">Nível de Acesso</th>
                   <th className="fs-small">Status</th>
-                  <th className="fs-small">Data de Cadastro</th> {/* Adiciona coluna para a data de cadastro */}
                 </tr>
               </thead>
               <tbody>
@@ -181,7 +168,6 @@ const CadastroUsuarios = () => {
                         <td className="fs-small">{usuario.email}</td>
                         <td className="fs-small">{usuario.nivelAcesso}</td>
                         <td className="fs-small">{usuario.statusUsuario}</td>
-                        <td className="fs-small">{usuario.dataCadastro}</td> {/* Exibe data de cadastro */}
                       </tr>
                     ))}
               </tbody>
@@ -198,7 +184,7 @@ const CadastroUsuarios = () => {
               <div className="form-group mb-3">
                 <label htmlFor="id" className="form-label">Id :</label>
                 <input
-                  className="form-control"
+                  className="form-control "
                   type="text"
                   disabled
                   value={id}
@@ -228,38 +214,53 @@ const CadastroUsuarios = () => {
                 />
               </div>
 
-              <div className="form-group mb-3">
+              <div className="form-group mb-3 position-relative">
                 <label htmlFor="senha" className="form-label">Senha :</label>
                 <input
                   className="form-control"
-                  type="password"
+                  type={showSenha ? "text" : "password"}
                   value={senha}
                   name="senha"
                   onChange={(e) => setSenha(e.target.value)}
                 />
+                <span 
+                  onClick={() => setShowSenha(!showSenha)} 
+                  className="position-absolute" 
+                  style={{ right: '10px', top: '35px', cursor: 'pointer' }}>
+                  {showSenha ? <FaEyeSlash /> : <FaEye />}
+                </span>
               </div>
 
-              <div className="form-group mb-3">
+              <div className="form-group mb-3 position-relative">
                 <label htmlFor="senhaConfirmacao" className="form-label">Confirme a Senha :</label>
                 <input
                   className="form-control"
-                  type="password"
+                  type={showSenhaConfirmacao ? "text" : "password"}
                   value={senhaConfirmacao}
                   name="senhaConfirmacao"
                   onChange={(e) => setSenhaConfirmacao(e.target.value)}
                 />
+                <span 
+                  onClick={() => setShowSenhaConfirmacao(!showSenhaConfirmacao)} 
+                  className="position-absolute" 
+                  style={{ right: '10px', top: '35px', cursor: 'pointer' }}>
+                  {showSenhaConfirmacao ? <FaEyeSlash /> : <FaEye />}
+                </span>
               </div>
 
               <div className="form-group mb-3">
                 <label htmlFor="nivelAcesso" className="form-label">Nível de Acesso :</label>
                 <select
-                  className="form-control"
+                  className="form-control "
                   value={nivelAcesso}
+                  name="nivelAcesso"
                   onChange={(e) => setNivelAcesso(e.target.value)}
                 >
-                  <option value="">Selecione...</option>
-                  {!loadingNivelAcesso && nivelAcessoOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
+                  <option value="">Selecione</option>
+                  {nivelAcessoOptions.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -267,13 +268,16 @@ const CadastroUsuarios = () => {
               <div className="form-group mb-3">
                 <label htmlFor="statusUsuario" className="form-label">Status :</label>
                 <select
-                  className="form-control"
+                  className="form-control "
                   value={statusUsuario}
+                  name="statusUsuario"
                   onChange={(e) => setStatusUsuario(e.target.value)}
                 >
-                  <option value="">Selecione...</option>
-                  {!loadingStatus && statusOptions.map((option, index) => (
-                    <option key={index} value={option}>{option}</option>
+                  <option value="">Selecione</option>
+                  {statusOptions.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -281,7 +285,7 @@ const CadastroUsuarios = () => {
               <div className="form-group mb-3">
                 <label htmlFor="cpf" className="form-label">CPF :</label>
                 <input
-                  className="form-control"
+                  className="form-control "
                   type="text"
                   value={cpf}
                   name="cpf"
@@ -292,7 +296,7 @@ const CadastroUsuarios = () => {
               <div className="form-group mb-3">
                 <label htmlFor="telefone" className="form-label">Telefone :</label>
                 <input
-                  className="form-control"
+                  className="form-control "
                   type="text"
                   value={telefone}
                   name="telefone"
@@ -301,19 +305,47 @@ const CadastroUsuarios = () => {
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="dataCadastro" className="form-label">Data de Cadastro:</label>
+                <label htmlFor="dataCadastro" className="form-label">Data de Cadastro :</label>
                 <input
-                  className="form-control"
-                  type="text"
-                  value={dataCadastro ? new Date(dataCadastro).toLocaleString() : ""} // Formata a data
+                  className="form-control "
+                  type="date"
+                  value={dataCadastro.split('T')[0]}
                   name="dataCadastro"
-                  readOnly // Torna o campo somente leitura
+                  onChange={(e) => {
+                    const dateValue = e.target.value;
+                    const localDateTimeString = dateValue + "T00:00:00";
+                    setDataCadastro(localDateTimeString);
+                  }}
                 />
               </div>
 
-              <button type="submit" className="btn btn-success" name="incluir">Incluir</button>
-              <button type="submit" className="btn btn-warning" name="alterar">Alterar</button>
-              <button type="submit" className="btn btn-danger" name="excluir">Excluir</button>
+              <div className="d-flex justify-content-between">
+                {!loading && (
+                  <button type="submit" className="btn btn-primary " name="incluir">
+                    Incluir
+                  </button>
+                )}
+                {!loading && (
+                  <button type="submit" className="btn btn-primary " name="alterar">
+                    Alterar
+                  </button>
+                )}
+                {!loading && (
+                  <button type="submit" className="btn btn-primary " name="excluir">
+                    Excluir
+                  </button>
+                )}
+              </div>
+
+              <div className="mt-3">
+                <p>
+                  {validatePassword(senha) ? (
+                    <span className="text-success">Senha forte</span>
+                  ) : (
+                    <span className="text-danger">A senha deve ter pelo menos 8 caracteres, um número e um caractere especial.</span>
+                  )}
+                </p>
+              </div>
             </form>
           </div>
         </div>

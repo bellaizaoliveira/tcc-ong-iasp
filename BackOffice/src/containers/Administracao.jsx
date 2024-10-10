@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import CadastroProdutos from './CadastroProdutos';
+import QuadroOcorrencias from '../components/QuadroOcorrencias';
 import CadastroUsuarios from './CadastroUsuarios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css'; // Importando Font Awesome
@@ -32,8 +32,8 @@ function Administracao() {
               <div className="mb-2">
                 <h6 className="card-title d-flex align-items-center">
                   <i className="fas fa-box me-2"></i>
-                  Cadastro de Produtos
-                  <Link to="cadastro-produtos" className="btn btn-link ms-2">
+                  Ocorrências
+                  <Link to="QuadroOcorrencias" className="btn btn-link ms-2">
                     <i className="fas fa-arrow-right"></i>
                   </Link>
                 </h6>
@@ -54,7 +54,7 @@ function Administracao() {
         {/* Coluna do Conteúdo */}
         <div className="flex-grow-1">
           <Routes>
-            <Route path="cadastro-produtos" element={<CadastroProdutos />} />
+            <Route path="QuadroOcorrencias" element={<QuadroOcorrencias />} />
             <Route path="cadastro-usuarios" element={<CadastroUsuarios />} />
             {/* Adicione mais rotas conforme necessário */}
           </Routes>

@@ -24,6 +24,7 @@ export const useApiRequest = (url) => {
 
   // Lê a variável de ambiente
   const showOriginalError = import.meta.env.VITE_SHOW_ORIGINAL_ERROR === 'true';
+  console.log(`Fetching data from: ${url}`);
 
   // Função para configurar a requisição HTTP
   const httpConfig = useCallback((data, method) => {
@@ -50,10 +51,20 @@ export const useApiRequest = (url) => {
 
   // Efeito para a requisição inicial (GET)
   useEffect(() => {
+
+    if (!url) {
+      // Se a URL for nula ou indefinida, não faça a requisição e retorne um array vazio
+      setData([]);
+      setLoading(false);
+      setError(null);
+      return;
+    }
+
     const fetchData = async () => {
       setLoading(true);
       try {
         const res = await fetch(url);
+        console.log('Response: -----', res); // Adicione esta linha para verificar a resposta
         if (!res.ok) {
           const errorResponse = await res.json();
           throw new Error(errorResponse.message || "Erro na requisição");
@@ -73,31 +84,60 @@ export const useApiRequest = (url) => {
   }, [url, callFetch, showOriginalError]);
 
   // Efeito para requisições POST, PUT, PATCH, DELETE
-  useEffect(() => {
-    const httpRequest = async () => {
-      if (!method) return;
+  // useEffect(() => {
+  //   const httpRequest = async () => {
+  //     if (!method) return;
 
-      setLoading(true);
-      try {
-        const endpoint = (method === "PUT" || method === "PATCH" || method === "DELETE") ? `${url}/${itemId}` : url;
-        const res = await fetch(endpoint, config);
-        if (!res.ok) {
-          const errorResponse = await res.json();
-          throw new Error(errorResponse.message || "Erro na requisição");
-        }
-        const json = await res.json();
-        setCallFetch((prev) => !prev);
-      } catch (error) {
-        setError(showOriginalError 
-          ? `Houve algum erro na requisição: ${error.message}` 
-          : "Houve algum erro na requisição.");
-      } finally {
-        setLoading(false);
+  //     setLoading(true);
+  //     try {
+  //       const endpoint = (method === "PUT" || method === "PATCH" || method === "DELETE") ? `${url}/${itemId}` : url;
+  //       const res = await fetch(endpoint, config);
+  //       if (!res.ok) {
+  //         const errorResponse = await res.json();
+  //         throw new Error(errorResponse.message || "Erro na requisição");
+  //       }
+  //       const json = await res.json();
+  //       setCallFetch((prev) => !prev);
+  //     } catch (error) {
+  //       setError(showOriginalError 
+  //         ? `Houve algum erro na requisição: ${error.message}` 
+  //         : "Houve algum erro na requisição.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   httpRequest();
+  // }, [config, method, url, itemId, showOriginalError]);
+// Efeito para requisições POST, PUT, PATCH, DELETE
+useEffect(() => {
+  const httpRequest = async () => {
+    if (!method) return;
+
+    setLoading(true);
+    try {
+      const endpoint = (method === "PUT" || method === "PATCH" || method === "DELETE") ? `${url}/${itemId}` : url;
+      const res = await fetch(endpoint, config);
+
+      if (!res.ok) {
+        const errorResponse = await res.json();
+        throw new Error(errorResponse.message || "Erro na requisição");
       }
-    };
 
-    httpRequest();
-  }, [config, method, url, itemId, showOriginalError]);
+      // Verifique se a resposta tem um corpo
+      const json = res.status !== 204 ? await res.json() : null;
+      setCallFetch((prev) => !prev);
+    } catch (error) {
+      setError(showOriginalError 
+        ? `Houve algum erro na requisição: ${error.message}` 
+        : "Houve algum erro na requisição.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  httpRequest();
+}, [config, method, url, itemId, showOriginalError]);
   return { data, httpConfig, loading, error };
 };
+
