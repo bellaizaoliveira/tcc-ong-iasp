@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -25,7 +27,13 @@ public class Ocorrencia {
     private String uf;
     private String pontoRef;
     private int tipoOcorrencia;
+    
+	@ManyToOne
+	@JoinColumn(name = "usuario")
+	private Usuario usuario;
+	
     private String statusOcor;
+    
 	public long getId() {
 		return id;
 	}
@@ -92,6 +100,14 @@ public class Ocorrencia {
 	public void setTipoOcorrencia(int tipoOcorrencia) {
 		this.tipoOcorrencia = tipoOcorrencia;
 	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	public String getStatusOcor() {
 		return statusOcor;
 	}

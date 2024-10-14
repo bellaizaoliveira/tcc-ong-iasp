@@ -58,7 +58,8 @@ const CadastroOcorrencia = () => {
       setTipoOcorrencia(ocorrencia.tipoOcorrencia || "");
       setStatusOcor(ocorrencia.statusOcor || "");
       setId(ocorrencia.id);
-      setUsuario(ocorrencia.usuario || usuarioAtual);
+      setUsuario(ocorrencia.usuario || "");
+      console.log(ocorrencia);
     }
   }, [ocorrencia, paramId, usuarioAtual]);
 
@@ -205,7 +206,7 @@ const CadastroOcorrencia = () => {
             )}
           </div>
           <div>
-            <FichaUsuario userId={usuario} />
+            <FichaUsuario userId={usuario.id} />
           </div>
           <form className="form" onSubmit={handleSave}>
             {/* Campos do formulário */}

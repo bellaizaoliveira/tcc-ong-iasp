@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -16,22 +18,21 @@ public class FotoOcorrencia {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int ocorrencia;
+
     private Integer sequencia;
     private String localFoto;
     private String descricao;
     private String titulo;
+    
+	@ManyToOne
+	@JoinColumn(name = "ocorrencia")
+	private Ocorrencia ocorrencia;
+	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public int getOcorrencia() {
-		return ocorrencia;
-	}
-	public void setOcorrencia(int ocorrencia) {
-		this.ocorrencia = ocorrencia;
 	}
 	public Integer getSequencia() {
 		return sequencia;
@@ -56,6 +57,12 @@ public class FotoOcorrencia {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+	public Ocorrencia getOcorrencia() {
+		return ocorrencia;
+	}
+	public void setOcorrencia(Ocorrencia ocorrencia) {
+		this.ocorrencia = ocorrencia;
 	}
     
     
