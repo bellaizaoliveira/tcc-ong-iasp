@@ -153,6 +153,7 @@ const CadastroOcorrencia = () => {
     setId(null);
     setDataOcor("");
     setDescricao("");
+    setEmail("");
     setTitulo("");
     setLogradouro("");
     setNumero("");
@@ -231,6 +232,20 @@ const CadastroOcorrencia = () => {
               <input
                 className="form-control"
                 type="text"
+                value={email}
+                name="email"
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group mb-3">
+              <label htmlFor="titulo" className="form-label">
+                Título: <span style={{ color: "red" }}>*</span>
+              </label>
+              <input
+                className="form-control"
+                type="text"
                 value={titulo}
                 name="titulo"
                 onChange={(e) => setTitulo(e.target.value)}
@@ -259,7 +274,7 @@ const CadastroOcorrencia = () => {
                 className="form-control"
                 value={tipoOcorrencia}
                 onChange={(e) => setTipoOcorrencia(e.target.value)}
-                required
+                requiredfti
               >
                 <option value="">Selecione um tipo</option>
                 {tipoOcorrencias.map((tipo) => (

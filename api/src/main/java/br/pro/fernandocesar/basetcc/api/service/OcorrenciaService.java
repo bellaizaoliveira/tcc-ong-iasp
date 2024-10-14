@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import br.pro.fernandocesar.basetcc.api.domain.Ocorrencia;
 
 import br.pro.fernandocesar.basetcc.api.repository.OcorrenciaRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class OcorrenciaService {
@@ -107,5 +108,12 @@ public class OcorrenciaService {
         // }
 
     }
+    
+
+    @Transactional
+	public Ocorrencia criarOcorrencia(String email, Ocorrencia ocorrencia) {
+	     validarOcorrencia(ocorrencia);
+	     return ocorrenciaRepository.save(ocorrencia);
+	}
 
 }
