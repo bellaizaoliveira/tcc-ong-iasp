@@ -35,7 +35,7 @@ const Login = () => {
       const isMatch = await bcrypt.compare(senhaInput, usuario.senha);
       if (isMatch) {
         // Login bem-sucedido
-        login(usuario.nivelAcesso, usuario.email);  
+        login(usuario.nivelAcesso, usuario.email, usuario.id);  
         navigate('/'); // Redireciona para a página inicial
       } else {
         setError("Senha incorreta.");

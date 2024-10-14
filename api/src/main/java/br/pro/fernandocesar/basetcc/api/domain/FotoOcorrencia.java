@@ -21,6 +21,44 @@ public class FotoOcorrencia {
     private String localFoto;
     private String descricao;
     private String titulo;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public int getOcorrencia() {
+		return ocorrencia;
+	}
+	public void setOcorrencia(int ocorrencia) {
+		this.ocorrencia = ocorrencia;
+	}
+	public Integer getSequencia() {
+		return sequencia;
+	}
+	public void setSequencia(Integer sequencia) {
+		this.sequencia = sequencia;
+	}
+	public String getLocalFoto() {
+		return localFoto;
+	}
+	public void setLocalFoto(String localFoto) {
+		this.localFoto = localFoto;
+	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+    
+    
 }
 
     
