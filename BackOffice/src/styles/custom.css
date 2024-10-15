@@ -3,92 +3,105 @@
 
 /* Cores primárias */
 :root {
-    --color-primary: #7ed957;  /* Verde principal */
-    --color-secondary: #00bf63; /* Verde */
-    --color-success: #8dcc4c;   /* Verde para detalhes (mais escuro) */
-    --color-info: #8dcc4c;      /* Verde para detalhes (mais escuro) */
-    --color-light: #ffffff;     /* Background branco */
-    --color-text: #000000;      /* Cor do texto: preto */
-    --color-button-text: #ffffff; /* Cor do texto nos botões: branco */
-}
+        --color-primary: #75af36;  /* Verde clarinho (limão) */
+        --color-secondary: #75af36; /* Verde clarinho (limão) */
+        --color-success: #75af36;   /* Verde clarinho (limão) */
+        --color-info: #75af36;      /* Verde clarinho (limão) */
+        --color-light: #ffffff;     /* Background branco */
+        --color-text: #000000;      /* Cor do texto: preto */
+        --color-button-text: #ffffff; /* Cor do texto nos botões: branco */
+    }
 
 /* Estilizando botões */
-.btn-primary {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
+.btn {
+    background-color: var(--color-primary); /* Verde para botões */
+    border: 1px solid var(--color-primary); /* Borda verde */
     color: var(--color-button-text); /* Texto branco */
+    padding: 3px 6px; /* Padding dos botões */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    transition: background-color 0.3s, color 0.3s; /* Transições suaves */
 }
 
-.btn-primary:hover {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-    color: var(--color-button-text); /* Texto branco */
-}
-
-.btn-secondary {
-    background-color: var(--color-secondary);
-    border-color: var(--color-secondary);
-    color: var(--color-button-text); /* Texto branco */
-}
-
-.btn-secondary:hover {
-    background-color: var(--color-light);
-    border-color: var(--color-light);
-    color: var(--color-secondary); /* Texto na cor verde */
-}
-
-.btn-success {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
-    color: var(--color-button-text); /* Texto branco */
-}
-
-.btn-success:hover {
-    background-color: var(--color-info);
-    border-color: var(--color-info);
+.btn:hover {
+    background-color: var(--color-secondary); /* Verde ao passar o mouse */
+    border-color: var(--color-secondary); /* Verde ao passar o mouse */
     color: var(--color-button-text); /* Texto branco */
 }
 
 /* Estilizando alertas */
+.alert {
+    padding: 15px; /* Padding dos alertas */
+    border-radius: 4px; /* Cantos arredondados */
+    margin-bottom: 15px; /* Espaçamento inferior */
+}
+
 .alert-success {
-    background-color: var(--color-success);
-    border-color: var(--color-success);
+    background-color: var(--color-success); /* Verde para alertas */
+    border: 1px solid var(--color-success); /* Borda verde */
     color: var(--color-text); /* Texto preto */
 }
 
 .alert-info {
-    background-color: var(--color-info);
-    border-color: var(--color-info);
+    background-color: var(--color-info); /* Verde para alertas */
+    border: 1px solid var(--color-info); /* Borda verde */
     color: var(--color-text); /* Texto preto */
 }
 
 /* Estilizando o fundo */
 body {
-    background-color: var(--color-light);
+    background-color: var(--color-light); /* Fundo branco */
     color: var(--color-text); /* Texto preto */
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
     font-weight: 500; /* Fonte Poppins medium */
+    font-size: 14px; /* Tamanho de fonte levemente reduzido para o corpo */
 }
 
 /* Estilizando links */
 a {
-    color: var(--color-primary);
+    color: var(--color-primary); /* Cor dos links */
+    text-decoration: none; /* Sem sublinhado */
 }
 
 a:hover {
-    color: var(--color-success);
+    color: var(--color-secondary); /* Cor ao passar o mouse nos links */
 }
 
 /* Estilizando cabeçalhos */
 h1, h2, h3, h4, h5, h6 {
     color: var(--color-text); /* Texto preto */
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
+    font-weight: 500; /* Fonte Poppins medium */
+}
+
+/* Reduzindo um pouco mais o tamanho dos títulos */
+h1 {
+    font-size: 2.0rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.875rem;
 }
 
 /* Estilizando navegação */
 .navbar {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary); /* Fundo da navegação */
 }
 
 .nav-link {
@@ -102,15 +115,85 @@ h1, h2, h3, h4, h5, h6 {
 /* Estilizando o rodapé */
 footer {
     margin-top: 50px; /* Espaçamento extra para o rodapé */
-    padding: 20px;
-    background-color: var(--color-secondary);
+    padding: 20px; /* Padding do rodapé */
+    background-color: var(--color-secondary); /* Fundo do rodapé */
     color: var(--color-button-text); /* Texto branco no rodapé */
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+    text-align: center; /* Centralizando o texto */
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
 }
 
 /* Outros elementos que você pode querer customizar */
 .card {
-    border-color: var(--color-secondary);
+    border-color: var(--color-primary); /* Verde para bordas das cartas */
     color: var(--color-text); /* Texto preto */
+}
+
+/* Estilizando o formulário */
+form {
+    max-width: 1000px; /* Largura máxima do formulário */
+    margin: 0 auto; /* Centralizando o formulário */
+    padding: 20px; /* Padding do formulário */
+    background-color: var(--color-light); /* Fundo branco para o formulário */
+    border: 1px solid var(--color-primary); /* Borda com cor verde clarinho */
+}
+
+/* Estilizando campos de entrada */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    width: 100%; /* Largura completa */
+    padding: 10px; /* Padding interno */
+    margin: 10px 0; /* Margem entre os campos */
+    border: 1px solid var(--color-primary); /* Borda com cor verde clarinho */
+    border-radius: 4px; /* Cantos arredondados */
+    font-size: 0.875rem; /* Tamanho de fonte reduzido */
+}
+
+/* Estilizando campos de senha com ícones */
+.password-wrapper {
+    position: relative; /* Wrapper para posicionar ícones */
+}
+
+.password-wrapper input[type="password"],
+.password-wrapper input[type="text"] {
+    padding-right: 30px; /* Espaço para o ícone */
+}
+
+.password-wrapper .toggle-password {
+    position: absolute; /* Ícone posicionado de forma absoluta */
+    right: 10px; /* Espaçamento à direita */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajuste para centralizar */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+}
+
+/* Estilizando botões dentro do formulário */
+form button {
+    width: auto; /* Largura automática para botões */
+    padding: 8px; /* Reduzindo o padding interno */
+    border: none; /* Sem borda */
+    border-radius: 4px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    margin-top: -2px; /* Espaçamento superior entre os botões */
+    margin-bottom: -2px; /* Espaçamento inferior entre os botões */
+}
+
+/* Adicionando estilos de responsividade */
+@media (max-width: 768px) {
+    form {
+        padding: 10px; /* Reduzindo o padding em telas menores */
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        padding: 8px; /* Reduzindo o padding em telas menores */
+        font-size: 0.75rem; /* Fonte reduzida em telas menores */
+    }
+    
+    form button {
+        padding: 8px; /* Reduzindo o padding em telas menores */
+    }
 }

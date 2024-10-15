@@ -1,0 +1,27 @@
+.container {
+    max-width: 800px; /* Ajuste a largura máxima do container */
+    margin: 0 auto; /* Centraliza o container */
+    padding: 20px; /* Adiciona um pouco de espaço interno */
+  }
+  
+  .form-group {
+    margin-bottom: 15px; /* Reduz o espaçamento entre os grupos de formulário */
+  }
+  
+  .form-control {
+    padding: 8px; /* Diminui o padding dos campos de entrada */
+    font-size: 14px; /* Diminui o tamanho da fonte dos campos de entrada */
+    width: 100%; /* Garante que os campos ocupem a largura total do seu contêiner pai */
+    max-width: 300px; /* Ajusta a largura máxima dos campos de entrada */
+  }
+  
+  h1 {
+    font-size: 24px; /* Diminui o tamanho do título */
+  }
+  
+  .row {
+    margin-bottom: 10px; /* Reduz o espaçamento entre as linhas */
+  }
+  
+  /* Se você tiver quadros específicos ou outras classes que deseja ajustar, adicione aqui */
+  

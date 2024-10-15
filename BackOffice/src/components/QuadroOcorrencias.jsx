@@ -76,15 +76,15 @@ const QuadroOcorrencias = () => {
         <div className="card p-3 mb-3">
           <h5>Ocorrências no período selecionado</h5>
           <p>
-            <strong>Data Início:</strong> {formatDateForDisplay(startDate)}{" "}
+            <strong>Data Início: </strong> {formatDateForDisplay(startDate)}{" "}
             <br />
-            <strong>Data Fim:</strong> {formatDateForDisplay(endDate)}
+            <strong>Data Fim: </strong> {formatDateForDisplay(endDate)}
           </p>
         </div>
       </div>
 
       <div className="mb-4 d-flex flex-wrap align-items-center">
-        <label className="me-2" style={{ minWidth: "120px" }}>
+        <label className="me-2" style={{ minWidth: "100px" }}>
           Data Início:
           <DatePicker
             selected={startDate}
@@ -92,10 +92,10 @@ const QuadroOcorrencias = () => {
             dateFormat="dd/MM/yyyy"
             placeholderText="DD/MM/AAAA"
             locale="pt-BR"
-            className="form-control"
+            className="form-control custom-datepicker" // Adiciona a nova classe CSS
           />
         </label>
-        <label className="me-2" style={{ minWidth: "120px" }}>
+        <label className="me-2" style={{ minWidth: "100px" }}>
           Data Fim:
           <DatePicker
             selected={endDate}
@@ -103,7 +103,7 @@ const QuadroOcorrencias = () => {
             dateFormat="dd/MM/yyyy"
             placeholderText="DD/MM/AAAA"
             locale="pt-BR"
-            className="form-control"
+            className="form-control custom-datepicker" // Adiciona a nova classe CSS
           />
         </label>
         <input
@@ -111,14 +111,13 @@ const QuadroOcorrencias = () => {
           placeholder="Pesquisar..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="form-control me-4"
-          style={{ flex: "1 1 300px" }} // Aumenta a largura do campo de pesquisa, mas mantém a responsividade
+          className="form-control custom-search me-4" // Adiciona a nova classe CSS
+          style={{ flex: "1 1 150px" }} // Ajusta a largura do campo de pesquisa
         />
       </div>
 
       {loading && <div className="alert alert-info">Carregando...</div>}
       {error && <div className="alert alert-danger">{error}</div>}
-
 
       <div className="mb-4">
         {/* Botão para criar nova ocorrência com id nulo */}
@@ -157,12 +156,6 @@ const QuadroOcorrencias = () => {
                   <p className="card-text">
                     <strong>Status:</strong> {item.statusOcor}
                   </p>
-                  {/* Link para a página CadastroOcorrencia passando o id */}
-
-                  {/* <Link to={`/cadastroocorrencia/${item.id}`} className="btn btn-primary">
-                  Editar Ocorrência
-                </Link> */}
-
                   {nivelAcesso === "ADMINISTRADOR" && (
                     <Link
                       to={`/cadastroocorrencia/${item.id}`}

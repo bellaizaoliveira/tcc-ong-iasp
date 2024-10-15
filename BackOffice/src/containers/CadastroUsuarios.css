@@ -1,6 +1,175 @@
-/* CadastroUsuarios.css */
-.fs-small {
-    font-size: 0.6rem; 
-    /* 60% menor que 1rem */
+/* Importando a fonte Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+/* Cores primárias */
+:root {
+    --color-primary: #75af36;  /* Verde clarinho (limão) */
+    --color-secondary: #75af36; /* Verde clarinho (limão) */
+    --color-success: #75af36;   /* Verde clarinho (limão) */
+    --color-info: #75af36;      /* Verde clarinho (limão) */
+    --color-light: #ffffff;     /* Background branco */
+    --color-text: #000000;      /* Cor do texto: preto */
+    --color-button-text: #ffffff; /* Cor do texto nos botões: branco */
+}
+
+/* Estilizando o fundo */
+body {
+    background-color: var(--color-light);
+    color: var(--color-text);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500; /* Fonte Poppins medium */
+    font-size: 14px; /* Tamanho de fonte levemente reduzido para o corpo */
+}
+
+/* Estilizando links */
+a {
+    color: var(--color-primary);
+}
+
+a:hover {
+    color: var(--color-success);
+}
+
+/* Estilizando cabeçalhos */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500; /* Tamanho original dos cabeçalhos */
+}
+
+/* Estilizando navegação */
+.navbar {
+    background-color: var(--color-primary);
+}
+
+.nav-link {
+    color: var(--color-text);
+}
+
+.nav-link:hover {
+    color: var(--color-success);
+}
+
+/* Estilizando o rodapé */
+footer {
+    margin-top: 50px; /* Espaçamento extra para o rodapé */
+    padding: 20px;
+    background-color: var(--color-secondary);
+    color: var(--color-button-text); /* Texto branco no rodapé */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Estilizando botões */
+button {
+    padding: 10px 15px; /* Padding interno para botões */
+    border: none; /* Sem borda */
+    border-radius: 5px; /* Cantos arredondados */
+    cursor: pointer; /* Cursor de mão ao passar o mouse */
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
+    font-weight: 500; /* Peso da fonte */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para hover */
+}
+
+/* Estilos para botões primários */
+.btn-primary {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-button-text);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+/* Estilos para botões secundários */
+.btn-secondary {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-button-text);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    border-color: var(--color-light);
+    color: var(--color-secondary);
+}
+
+/* Estilos para botões de sucesso */
+.btn-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-button-text);
+}
+
+.btn-success:hover {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+}
+
+/* Estilizando alertas */
+.alert-success {
+    background-color: var(--color-success);
+    border-color: var(--color-success);
+    color: var(--color-text);
+}
+
+.alert-info {
+    background-color: var(--color-info);
+    border-color: var(--color-info);
+    color: var(--color-text);
+}
+
+/* Estilizando outros elementos */
+.card {
+    border-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+/* Estilizando o formulário */
+form {
+    max-width: 1000px; /* Aumentando a largura do formulário para 1000px */
+    margin: 0 auto; /* Centralizando o formulário */
+    padding: 20px; /* Adicionando padding para um visual melhor */
+    background-color: var(--color-light); /* Fundo branco para o formulário */
+    border: 1px solid var(--color-secondary); /* Borda com cor secundária */
+    border-radius: 5px; /* Cantos arredondados */
+}
+
+/* Estilizando campos de entrada */
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Largura completa */
+    padding: 10px; /* Padding interno */
+    margin: 10px 0; /* Margem entre os campos */
+    border: 1px solid var(--color-secondary); /* Borda */
+    border-radius: 4px; /* Cantos arredondados */
+    font-family: 'Poppins', sans-serif; /* Fonte Poppins */
+}
+
+/* Estilizando botões dentro do formulário */
+form button {
+    width: auto; /* Largura automática para botões */
+    padding: 8px; /* Reduzindo o padding interno */
+    margin-top: -2px; /* Espaçamento superior entre os botões */
+    margin-bottom: -2px; /* Espaçamento inferior entre os botões */
+}
+
+/* Adicionando estilos de responsividade */
+@media (max-width: 768px) {
+    form {
+        padding: 10px; /* Reduzindo o padding em telas menores */
+    }
     
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        padding: 8px; /* Reduzindo o padding em telas menores */
+    }
+    
+    form button {
+        padding: 8px; /* Reduzindo o padding em telas menores */
+    }
 }

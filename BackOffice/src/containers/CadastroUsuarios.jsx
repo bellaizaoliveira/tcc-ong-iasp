@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import './CadastroUsuarios.css'; // Importa o CSS
 import { useApiRequest } from "../hooks/useApiRequest";
 import bcrypt from "bcryptjs";
-import './CadastroUsuarios.css'; // Importa o CSS
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ícones para mostrar/ocultar senha
 
 const CadastroUsuarios = () => {
@@ -38,11 +38,17 @@ const CadastroUsuarios = () => {
   const [nivelAcesso, setNivelAcesso] = useState("");
   const [cpf, setCpf] = useState("");
   const [telefone, setTelefone] = useState("");
-  const [dataCadastro, setDataCadastro] = useState("");
+  const [dataCadastro, setDataCadastro] = useState(""); // Novo estado para dataCadastro
   const [senhaOriginal, setSenhaOriginal] = useState("");
 
   const [showSenha, setShowSenha] = useState(false);
   const [showSenhaConfirmacao, setShowSenhaConfirmacao] = useState(false);
+  
+  const [errorMessages, setErrorMessages] = useState({
+    senha: '',
+    cpf: '',
+    telefone: ''
+  });
 
   const handleItemClick = (usuario) => {
     setSenhaOriginal(usuario.senha);
@@ -59,6 +65,16 @@ const CadastroUsuarios = () => {
     setSenhaConfirmacao("");
   };
 
+  const validatePhone = (phone) => {
+    const phonePattern = /^\(\d{2}\) \d{5}-\d{4}$/; // Formato: (XX) XXXXX-XXXX
+    return phonePattern.test(phone);
+  };
+
+  const validateCpf = (cpf) => {
+    const cpfPattern = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/; // Formato: XXX.XXX.XXX-XX
+    return cpfPattern.test(cpf);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const clickedButton = e.nativeEvent.submitter;
@@ -67,6 +83,18 @@ const CadastroUsuarios = () => {
     if (buttonName === "incluir" || buttonName === "alterar") {
       if (senha !== senhaConfirmacao) {
         alert("As senhas não coincidem!");
+        return;
+      }
+      if (!validatePassword(senha)) {
+        setErrorMessages(prev => ({ ...prev, senha: 'A senha deve ter pelo menos 8 caracteres, um número e um caractere especial.' }));
+        return;
+      }
+      if (!validateCpf(cpf)) {
+        setErrorMessages(prev => ({ ...prev, cpf: 'CPF deve estar no formato XXX.XXX.XXX-XX.' }));
+        return;
+      }
+      if (!validatePhone(telefone)) {
+        setErrorMessages(prev => ({ ...prev, telefone: 'Telefone deve estar no formato (XX) XXXXX-XXXX.' }));
         return;
       }
     }
@@ -79,7 +107,7 @@ const CadastroUsuarios = () => {
       nivelAcesso,
       cpf,
       telefone,
-      dataCadastro,
+      dataCadastro, // Adiciona a data de cadastro
     };
 
     if (buttonName === "incluir") {
@@ -114,7 +142,7 @@ const CadastroUsuarios = () => {
     setStatusUsuario("");
     setCpf("");
     setTelefone("");
-    setDataCadastro("");
+    setDataCadastro(""); // Limpa a data de cadastro
     setSenha("");
     setSenhaConfirmacao("");
   };
@@ -197,6 +225,7 @@ const CadastroUsuarios = () => {
                 <input
                   className="form-control"
                   type="text"
+                  required
                   value={nome}
                   name="nome"
                   onChange={(e) => setNome(e.target.value)}
@@ -208,143 +237,124 @@ const CadastroUsuarios = () => {
                 <input
                   className="form-control"
                   type="email"
+                  required
                   value={email}
                   name="email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
-              <div className="form-group mb-3 position-relative">
-                <label htmlFor="senha" className="form-label">Senha :</label>
+              <div className="form-group mb-3">
+                <label htmlFor="cpf" className="form-label">CPF:</label>
                 <input
                   className="form-control"
-                  type={showSenha ? "text" : "password"}
-                  value={senha}
-                  name="senha"
-                  onChange={(e) => setSenha(e.target.value)}
+                  type="text"
+                  required
+                  value={cpf}
+                  name="cpf"
+                  onChange={(e) => setCpf(e.target.value)}
+                  placeholder="XXX.XXX.XXX-XX"
                 />
-                <span 
-                  onClick={() => setShowSenha(!showSenha)} 
-                  className="position-absolute" 
-                  style={{ right: '10px', top: '35px', cursor: 'pointer' }}>
-                  {showSenha ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
-
-              <div className="form-group mb-3 position-relative">
-                <label htmlFor="senhaConfirmacao" className="form-label">Confirme a Senha :</label>
-                <input
-                  className="form-control"
-                  type={showSenhaConfirmacao ? "text" : "password"}
-                  value={senhaConfirmacao}
-                  name="senhaConfirmacao"
-                  onChange={(e) => setSenhaConfirmacao(e.target.value)}
-                />
-                <span 
-                  onClick={() => setShowSenhaConfirmacao(!showSenhaConfirmacao)} 
-                  className="position-absolute" 
-                  style={{ right: '10px', top: '35px', cursor: 'pointer' }}>
-                  {showSenhaConfirmacao ? <FaEyeSlash /> : <FaEye />}
-                </span>
+                {errorMessages.cpf && <span className="text-danger">{errorMessages.cpf}</span>}
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="nivelAcesso" className="form-label">Nível de Acesso :</label>
+                <label htmlFor="telefone" className="form-label">Telefone:</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  required
+                  value={telefone}
+                  name="telefone"
+                  onChange={(e) => setTelefone(e.target.value)}
+                  placeholder="(XX) XXXXX-XXXX"
+                />
+                {errorMessages.telefone && <span className="text-danger">{errorMessages.telefone}</span>}
+              </div>
+
+              <div className="form-group mb-3">
+                <label htmlFor="senha" className="form-label">Senha:</label>
+                <div className="input-group">
+                  <input
+                    className="form-control"
+                    type={showSenha ? "text" : "password"}
+                    required
+                    value={senha}
+                    name="senha"
+                    onChange={(e) => setSenha(e.target.value)}
+                  />
+                  <span className="input-group-text" onClick={() => setShowSenha(!showSenha)}>
+                    {showSenha ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+              </div>
+
+              <div className="form-group mb-3">
+                <label htmlFor="senhaConfirmacao" className="form-label">Confirmação de Senha:</label>
+                <div className="input-group">
+                  <input
+                    className="form-control"
+                    type={showSenhaConfirmacao ? "text" : "password"}
+                    required
+                    value={senhaConfirmacao}
+                    name="senhaConfirmacao"
+                    onChange={(e) => setSenhaConfirmacao(e.target.value)}
+                  />
+                  <span className="input-group-text" onClick={() => setShowSenhaConfirmacao(!showSenhaConfirmacao)}>
+                    {showSenhaConfirmacao ? <FaEyeSlash /> : <FaEye />}
+                  </span>
+                </div>
+                {errorMessages.senha && <span className="text-danger">{errorMessages.senha}</span>}
+              </div>
+
+              <div className="form-group mb-3">
+                <label htmlFor="nivelAcesso" className="form-label">Nível de Acesso:</label>
                 <select
-                  className="form-control "
+                  className="form-select"
+                  required
                   value={nivelAcesso}
                   name="nivelAcesso"
                   onChange={(e) => setNivelAcesso(e.target.value)}
                 >
-                  <option value="">Selecione</option>
-                  {nivelAcessoOptions.map((option, index) => (
-                    <option key={index} value={option}>
-                      {option}
-                    </option>
+                  <option value="">Selecione um nível de acesso</option>
+                  {nivelAcessoOptions.map((nivel, index) => (
+                    <option key={index} value={nivel}>{nivel}</option>
                   ))}
                 </select>
               </div>
 
               <div className="form-group mb-3">
-                <label htmlFor="statusUsuario" className="form-label">Status :</label>
+                <label htmlFor="dataCadastro" className="form-label">Data de Cadastro:</label>
+                <input
+                  className="form-control"
+                  type="datetime-local"
+                  required
+                  value={dataCadastro}
+                  name="dataCadastro"
+                  onChange={(e) => setDataCadastro(e.target.value)}
+                />
+              </div>
+
+              <div className="form-group mb-3">
+                <label htmlFor="statusUsuario" className="form-label">Status:</label>
                 <select
-                  className="form-control "
+                  className="form-select"
+                  required
                   value={statusUsuario}
                   name="statusUsuario"
                   onChange={(e) => setStatusUsuario(e.target.value)}
                 >
-                  <option value="">Selecione</option>
-                  {statusOptions.map((option, index) => (
-                    <option key={index} value={option}>
-                      {option}
-                    </option>
+                  <option value="">Selecione um status</option>
+                  {statusOptions.map((status, index) => (
+                    <option key={index} value={status}>{status}</option>
                   ))}
                 </select>
               </div>
 
-              <div className="form-group mb-3">
-                <label htmlFor="cpf" className="form-label">CPF :</label>
-                <input
-                  className="form-control "
-                  type="text"
-                  value={cpf}
-                  name="cpf"
-                  onChange={(e) => setCpf(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group mb-3">
-                <label htmlFor="telefone" className="form-label">Telefone :</label>
-                <input
-                  className="form-control "
-                  type="text"
-                  value={telefone}
-                  name="telefone"
-                  onChange={(e) => setTelefone(e.target.value)}
-                />
-              </div>
-
-              <div className="form-group mb-3">
-                <label htmlFor="dataCadastro" className="form-label">Data de Cadastro :</label>
-                <input
-                  className="form-control "
-                  type="date"
-                  value={dataCadastro.split('T')[0]}
-                  name="dataCadastro"
-                  onChange={(e) => {
-                    const dateValue = e.target.value;
-                    const localDateTimeString = dateValue + "T00:00:00";
-                    setDataCadastro(localDateTimeString);
-                  }}
-                />
-              </div>
-
-              <div className="d-flex justify-content-between">
-                {!loading && (
-                  <button type="submit" className="btn btn-primary " name="incluir">
-                    Incluir
-                  </button>
-                )}
-                {!loading && (
-                  <button type="submit" className="btn btn-primary " name="alterar">
-                    Alterar
-                  </button>
-                )}
-                {!loading && (
-                  <button type="submit" className="btn btn-primary " name="excluir">
-                    Excluir
-                  </button>
-                )}
-              </div>
-
-              <div className="mt-3">
-                <p>
-                  {validatePassword(senha) ? (
-                    <span className="text-success">Senha forte</span>
-                  ) : (
-                    <span className="text-danger">A senha deve ter pelo menos 8 caracteres, um número e um caractere especial.</span>
-                  )}
-                </p>
+              <div className="d-flex justify-content-between mt-4">
+                <button type="submit" name="incluir" className="btn btn-primary">Incluir</button>
+                <button type="submit" name="alterar" className="btn btn-warning">Alterar</button>
+                <button type="submit" name="excluir" className="btn btn-danger">Excluir</button>
               </div>
             </form>
           </div>

@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 const FichaUsuario = ({ userId }) => {
   const [user, setUser] = useState(null);
@@ -45,19 +43,11 @@ const FichaUsuario = ({ userId }) => {
           {user.nome}
         </span>
         <button onClick={handleToggleModal} className="btn btn-primary">
-          {isExpanded ? (
-            <>
-              Ocultar Detalhes <FontAwesomeIcon icon={faChevronUp} />
-            </>
-          ) : (
-            <>
-              Mostrar Detalhes <FontAwesomeIcon icon={faChevronDown} />
-            </>
-          )}
+          {isExpanded ? "Detalhes" : "Detalhes"}
         </button>
       </div>
       {isExpanded && (
-        <div className="user-details">
+        <div className="user-details mb-3"> {/* Adicionei mb-3 aqui */}
           <p><strong>ID:</strong> {user.id}</p>
           <p><strong>Email:</strong> {user.email}</p>
           <p><strong>Nível de Acesso:</strong> {user.nivelAcesso}</p>

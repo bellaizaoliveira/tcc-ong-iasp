@@ -25,6 +25,7 @@
     "react-input-mask": "^2.0.4",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.25.0",
+    "reactrouter01": "file:",
     "sass": "^1.79.4"
   },
   "devDependencies": {

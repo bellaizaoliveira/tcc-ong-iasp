@@ -58,8 +58,7 @@ const CadastroOcorrencia = () => {
       setTipoOcorrencia(ocorrencia.tipoOcorrencia || "");
       setStatusOcor(ocorrencia.statusOcor || "");
       setId(ocorrencia.id);
-      setUsuario(ocorrencia.usuario || "");
-      console.log(ocorrencia);
+      setUsuario(ocorrencia.usuario || usuarioAtual);
     }
   }, [ocorrencia, paramId, usuarioAtual]);
 
@@ -136,7 +135,7 @@ const CadastroOcorrencia = () => {
         setId(result.id);
       } else {
         // Se foi uma atualização, redireciona para a home
-        navigate("/");
+        navigate(-1);
       }
     } catch (error) {
       console.error(
@@ -153,7 +152,6 @@ const CadastroOcorrencia = () => {
     setId(null);
     setDataOcor("");
     setDescricao("");
-    setEmail("");
     setTitulo("");
     setLogradouro("");
     setNumero("");
@@ -207,7 +205,7 @@ const CadastroOcorrencia = () => {
             )}
           </div>
           <div>
-            <FichaUsuario userId={usuario.id} />
+            <FichaUsuario userId={usuario} />
           </div>
           <form className="form" onSubmit={handleSave}>
             {/* Campos do formulário */}
@@ -221,20 +219,6 @@ const CadastroOcorrencia = () => {
                 value={dataOcor}
                 name="dataOcor"
                 onChange={(e) => setDataOcor(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-group mb-3">
-              <label htmlFor="titulo" className="form-label">
-                Título: <span style={{ color: "red" }}>*</span>
-              </label>
-              <input
-                className="form-control"
-                type="text"
-                value={email}
-                name="email"
-                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -274,7 +258,7 @@ const CadastroOcorrencia = () => {
                 className="form-control"
                 value={tipoOcorrencia}
                 onChange={(e) => setTipoOcorrencia(e.target.value)}
-                requiredfti
+                required
               >
                 <option value="">Selecione um tipo</option>
                 {tipoOcorrencias.map((tipo) => (
@@ -385,7 +369,7 @@ const CadastroOcorrencia = () => {
               <button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() => navigate("/")}
+                onClick={() => navigate(-1)}
               >
                 Voltar
               </button>

@@ -1,7 +1,6 @@
 package br.pro.fernandocesar.basetcc.api.controller;
 
 import br.pro.fernandocesar.basetcc.api.domain.FotoOcorrencia;
-import br.pro.fernandocesar.basetcc.api.domain.Ocorrencia;
 import br.pro.fernandocesar.basetcc.api.service.FotoOcorrenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +28,7 @@ public class FotoOcorrenciaController {
     }
 
     @GetMapping("/ocorrencia/{ocorrencia}")
-    public List<FotoOcorrencia> getByOcorrencia(@PathVariable long ocorrencia) {
+    public List<FotoOcorrencia> getByOcorrencia(@PathVariable int ocorrencia) {
         return service.findByOcorrencia(ocorrencia);
     }
 

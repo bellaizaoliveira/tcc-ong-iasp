@@ -75,13 +75,6 @@ public class OcorrenciaController {
     public Ocorrencia criarOcorrencia(@RequestBody Ocorrencia ocorrencia) {
         return ocorrenciaService.criarOcorrencia(ocorrencia);
     }
-    
-
-    @PostMapping("/{email}")
-    public Ocorrencia criarOcorr(@PathVariable String email, @RequestBody Ocorrencia ocorrencia) {
-        return ocorrenciaService.criarOcorrencia(email, ocorrencia);
-    }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<Ocorrencia> atualizarOcorrencia(@PathVariable Long id, @RequestBody Ocorrencia ocorrencia) {
